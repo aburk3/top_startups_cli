@@ -9,9 +9,9 @@ Gem::Specification.new do |spec|
   spec.authors       = ["aburk3"]
   spec.email         = ["aburk3@gmail.com"]
 
-  spec.summary       = %q{TODO: Write a short summary, because RubyGems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.summary       = "This gem allows a user to get details on startups by rank"
+  spec.description   = "User can select a given startup by rank and then choose to get more details on the startup. This is all done via scraping with Nokogiri."
+  spec.homepage      = "https://github.com/aburk3/top_startups"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
