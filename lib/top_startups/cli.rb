@@ -10,13 +10,7 @@ class TopStartups::CLI
 
   def list_startups
     puts "Today's Top Startups:"
-    puts <<~DOC
-      1. Medium - United States
-      2. Airbnb - United States
-      3. 500 px - Canada
-      4. Uber - United States
-      5. Canva - Australia
-    DOC
+    @startups = TopStartups::Startups.today
   end
 
   def menu
