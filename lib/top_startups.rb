@@ -1,5 +1,2 @@
-require "top_startups/version"
-
-module TopStartups
-  # Your code goes here...
-end
+require_relative "./top_startups/version"
+require_relative './top_startups/cli'
