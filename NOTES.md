@@ -13,3 +13,11 @@ What does details consist of?
 3. SR Web
 4. SR Social
 5. Latest Funding Amount
+
+Show a list of top startups:
+
+1. Medium - United States
+2. Airbnb - United States
+3. 500 px - Canada
+4. Uber - United States
+5. Canva - Australia 
