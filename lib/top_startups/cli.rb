@@ -11,6 +11,9 @@ class TopStartups::CLI
   def list_startups
     puts "Today's Top Startups:"
     @startups = TopStartups::Startups.today
+    @startups.each.with_index(1) do |startup, i|
+      puts "#{i}. #{startup.name} - #{startup.location}"
+    end
   end
 
   def menu
@@ -18,15 +21,14 @@ class TopStartups::CLI
     while input != "exit"
       puts "Enter the number of the startup you would like more info on, type 'list' to see the startups, or you can type exit:"
       input = gets.strip.downcase
-      case input
-      when "1"
-        puts "More info on startup 1..."
-      when "2"
-        puts "More info on startup 2..."
-      when "list"
+
+      if input.to_i > 0
+        the_startup = @startups[input.to_i-1]
+        puts "#{the_startup.name} - #{the_startup.location}"
+      elsif input == "list"
         list_startups
       else
-        puts "Did not recognize, please type list or exit."
+        puts "Did not recognize the input, please type list or exit."
       end
     end
   end

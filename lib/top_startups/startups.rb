@@ -1,11 +1,6 @@
 class TopStartups::Startups
   attr_accessor :name, :location, :rank, :srscore, :funding, :url
   def self.today
-    # here doc
-    puts <<~DOC
-      1. Medium - United States
-      2. Airbnb - United States
-    DOC
 
     startup_1 = self.new
     startup_1.name = "Medium"
