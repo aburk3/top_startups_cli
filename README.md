@@ -1,8 +1,8 @@
 # TopStartups
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/top_startups`. To experiment with that code, run `bin/console` for an interactive prompt.
+This gem "top-startups" scrapes the web-page "https://www.startupranking.com/top" for the top 5 current startups. Upon running, the CLI (command line interface) will ask the user to select a number from a list of 5 startups. Further details will be presented based on the selected startup.
 
-TODO: Delete this and the text above, and describe your gem
+The details presented include: name, location(country), rank, SR score, and funding. SR Score explained here: https://www.startupranking.com/how-it-works#sr_score
 
 ## Installation
 
