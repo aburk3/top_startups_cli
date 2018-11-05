@@ -12,7 +12,7 @@ class TopStartups::CLI
     puts "Today's Top Startups:"
     @startups = TopStartups::Startups.today
     @startups.each.with_index(1) do |startup, i|
-      puts "#{i}. #{startup.name} - #{startup.location}"
+      puts "#{i}. #{startup.name}"
     end
   end
 
@@ -24,7 +24,12 @@ class TopStartups::CLI
 
       if input.to_i > 0
         the_startup = @startups[input.to_i-1]
+        puts "---------------------------------------------"
         puts "#{the_startup.name} - #{the_startup.location}"
+        puts <<~DOC
+          Rank: #{the_startup.rank}
+          SR Score: #{the_startup.srscore}
+        DOC
       elsif input == "list"
         list_startups
       else
