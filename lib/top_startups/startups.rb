@@ -2,10 +2,10 @@ class TopStartups::Startups
   attr_accessor :name, :location, :rank, :srscore, :funding
 
   def self.today
-    self.scrape_rankings
+    self.scrape_main
   end
 
-  def self.scrape_rankings
+  def self.scrape_main
       doc = Nokogiri::HTML(open("https://www.startupranking.com/top"))
       startup_array = []
     5.times do |i|
@@ -18,4 +18,10 @@ class TopStartups::Startups
     end
     startup_array
   end
+
+  def self.scrape_details(url)
+    # Takes argument and gsubs 'top' with 'url' for the details page of the startup in order to scrape for latest funding details
+    doc = Nokogiri::HTML(open("https://www.startupranking.com/url"))
+  end
+
 end

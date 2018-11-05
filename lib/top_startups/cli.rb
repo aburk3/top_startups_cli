@@ -4,7 +4,7 @@ class TopStartups::CLI
 
   def call
     list_startups
-    menu
+    user_menu
     goodbye
   end
 
@@ -16,7 +16,7 @@ class TopStartups::CLI
     end
   end
 
-  def menu
+  def user_menu
     input = nil
     while input != "exit"
       puts " "
