@@ -33,7 +33,6 @@ class TopStartups::Startups
   #doc.search(".ranks")[0].children.css("td")[0].text
   def self.scrape_ranking_one
     doc = Nokogiri::HTML(open("https://www.startupranking.com/top"))
-    binding.pry
     startups = self.new
     startups.name = doc.search(".ranks td.tleft div.name")[0].children.text
     startups.location = doc.search(".ranks td .f32").children.css("img")[0].attribute("title").value

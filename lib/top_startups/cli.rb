@@ -28,7 +28,7 @@ class TopStartups::CLI
         puts "---------------------------------------------"
         puts "#{the_startup.name}"
         puts <<~DOC
-          Location: #{the_startup.location}"
+          Location: #{the_startup.location}
           Rank: #{the_startup.rank}
           SR Score: #{the_startup.srscore}
         DOC
