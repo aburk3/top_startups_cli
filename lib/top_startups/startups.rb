@@ -22,7 +22,7 @@ class TopStartups::Startups
   #     startups = self.new
   #     startups.name = doc.search(".ranks td.tleft div.name")[i].children.text
   #     startups.location = doc.search(".ranks td .f32").children.css("img")[i].attribute("title").value
-  #     startups.rank = doc.search(".ranks td .f32").children.css("div")[i].children.text
+  #     startups.rank = doc.search(".ranks").children.css("td:first-child")[0].text
   #     startups.srscore = doc.search(".ranks td.tright.sr-score")[i].children.text.strip
   #     startups
   #   end
@@ -30,13 +30,14 @@ class TopStartups::Startups
 
 
   ##<Nokogiri::XML::Element:0x3fcc9649ccb0 name="td" children=[#<Nokogiri::XML::Text:0x3fcc96499600 "99">
+  #doc.search(".ranks")[0].children.css("td")[0].text
   def self.scrape_ranking_one
     doc = Nokogiri::HTML(open("https://www.startupranking.com/top"))
     binding.pry
     startups = self.new
     startups.name = doc.search(".ranks td.tleft div.name")[0].children.text
     startups.location = doc.search(".ranks td .f32").children.css("img")[0].attribute("title").value
-    startups.rank = doc.search(".ranks td .f32").children.css("div")[0].children.text
+    startups.rank = doc.search(".ranks").children.css("td:first-child")[0].text
     startups.srscore = doc.search(".ranks td.tright.sr-score")[0].children.text.strip
     startups
   end
@@ -47,7 +48,7 @@ class TopStartups::Startups
     startups = self.new
     startups.name = doc.search(".ranks td.tleft div.name")[1].children.text
     startups.location = doc.search(".ranks td .f32").children.css("img")[1].attribute("title").value
-    startups.rank = doc.search(".ranks td .f32").children.css("div")[1].children.text
+    startups.rank = doc.search(".ranks").children.css("td:first-child")[1].text
     startups.srscore = doc.search(".ranks td.tright.sr-score")[1].children.text.strip
     startups
   end
@@ -58,7 +59,7 @@ class TopStartups::Startups
     startups = self.new
     startups.name = doc.search(".ranks td.tleft div.name")[2].children.text
     startups.location = doc.search(".ranks td .f32").children.css("img")[2].attribute("title").value
-    startups.rank = doc.search(".ranks td .f32").children.css("div")[2].children.text
+    startups.rank = doc.search(".ranks").children.css("td:first-child")[2].text
     startups.srscore = doc.search(".ranks td.tright.sr-score")[2].children.text.strip
     startups
   end
@@ -69,7 +70,7 @@ class TopStartups::Startups
     startups = self.new
     startups.name = doc.search(".ranks td.tleft div.name")[3].children.text
     startups.location = doc.search(".ranks td .f32").children.css("img")[3].attribute("title").value
-    startups.rank = doc.search(".ranks td .f32").children.css("div")[3].children.text
+    startups.rank = doc.search(".ranks").children.css("td:first-child")[3].text
     startups.srscore = doc.search(".ranks td.tright.sr-score")[3].children.text.strip
     startups
   end
@@ -80,7 +81,7 @@ class TopStartups::Startups
     startups = self.new
     startups.name = doc.search(".ranks td.tleft div.name")[4].children.text
     startups.location = doc.search(".ranks td .f32").children.css("img")[4].attribute("title").value
-    startups.rank = doc.search(".ranks td .f32").children.css("div")[4].children.text
+    startups.rank = doc.search(".ranks").children.css("td:first-child")[4].text
     startups.srscore = doc.search(".ranks td.tright.sr-score")[4].children.text.strip
     startups
   end
