@@ -3,10 +3,12 @@ class TopStartups::Startups
 
   def self.today
     self.scrape_main
+    self.scrape_details
   end
 
   def self.scrape_main
       doc = Nokogiri::HTML(open("https://www.startupranking.com/top"))
+
       startup_array = []
     5.times do |i|
       startups = self.new
@@ -19,9 +21,12 @@ class TopStartups::Startups
     startup_array
   end
 
-  def self.scrape_details(url)
+  def self.scrape_details
     # Takes argument and gsubs 'top' with 'url' for the details page of the startup in order to scrape for latest funding details
-    doc = Nokogiri::HTML(open("https://www.startupranking.com/url"))
+    self.scrape_main.each do |startup|
+      doc = Nokogiri::HTML(open("https://www.startupranking.com/#{startup.name}"))
+      binding.pry
+      # startup.funding =
+    end
   end
-
 end
