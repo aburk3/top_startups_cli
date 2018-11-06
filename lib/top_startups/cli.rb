@@ -31,6 +31,7 @@ class TopStartups::CLI
           Location: #{the_startup.location}
           Rank: #{the_startup.rank}
           SR Score: #{the_startup.srscore}
+          Latest Funding: #{the_startup.funding}
         DOC
       elsif input == "list"
         puts "---------------------------------------------"

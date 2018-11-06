@@ -6,6 +6,7 @@ class TopStartups::Startups
     self.scrape_details
   end
 
+  # This method scrapes the main page of the startup rankings and assigns instance variables
   def self.scrape_main
       doc = Nokogiri::HTML(open("https://www.startupranking.com/top"))
 
@@ -21,12 +22,12 @@ class TopStartups::Startups
     startup_array
   end
 
+  # This methods uses the @name instance variable to obtain the startups 'details' URL
+  # It then scrapes this page for funding information and assigns it to an instance variable
   def self.scrape_details
-    # Takes argument and gsubs 'top' with 'url' for the details page of the startup in order to scrape for latest funding details
     self.scrape_main.each do |startup|
       doc = Nokogiri::HTML(open("https://www.startupranking.com/#{startup.name}"))
-      binding.pry
-      # startup.funding =
+      startup.funding = doc.search(".ranks").children.css("span")[0].text.gsub(" ", "").strip
     end
   end
 end
