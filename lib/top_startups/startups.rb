@@ -11,7 +11,7 @@ class TopStartups::Startups
       doc = Nokogiri::HTML(open("https://www.startupranking.com/top"))
 
       startup_array = []
-    5.times do |i|
+    25.times do |i|
       startups = self.new
       startups.name = doc.search(".ranks td.tleft div.name")[i].children.text
       startups.location = doc.search(".ranks td .f32").children.css("img")[i].attribute("title").value
@@ -26,8 +26,10 @@ class TopStartups::Startups
   # It then scrapes this page for funding information and assigns it to an instance variable
   def self.scrape_details
     self.scrape_main.each do |startup|
-      doc = Nokogiri::HTML(open("https://www.startupranking.com/#{startup.name}"))
+      doc = Nokogiri::HTML(open("https://www.startupranking.com/#{startup.name.gsub!(/\s+/, '')}"))
       startup.funding = doc.search(".ranks").children.css("span")[0].text.gsub(" ", "").strip
     end
   end
+
+
 end
