@@ -1,7 +1,7 @@
 class TopStartups::Startups
   attr_accessor :name, :location, :rank, :srscore, :funding
 
-  def self.today
+  def self.refresh
     self.scrape_main
     self.scrape_details
   end
@@ -9,9 +9,8 @@ class TopStartups::Startups
   # This method scrapes the main page of the startup rankings and assigns instance variables
   def self.scrape_main
       doc = Nokogiri::HTML(open("https://www.startupranking.com/top"))
-
       startup_array = []
-    25.times do |i|
+    5.times do |i|
       startups = self.new
       startups.name = doc.search(".ranks td.tleft div.name")[i].children.text
       startups.location = doc.search(".ranks td .f32").children.css("img")[i].attribute("title").value
@@ -30,6 +29,4 @@ class TopStartups::Startups
       startup.funding = doc.search(".ranks").children.css("span")[0].text.gsub(" ", "").strip
     end
   end
-
-
 end
