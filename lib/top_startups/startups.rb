@@ -27,7 +27,6 @@ class TopStartups::Startups
     self.scrape_main.each do |startup|
       startup.name.gsub!(/\s+/, '')
       doc = Nokogiri::HTML(open("https://www.startupranking.com/#{startup.name}"))
-      # doc = Nokogiri::HTML(open("https://www.startupranking.com/medium"))
       startup.funding = doc.search(".ranks td span").first.text
     end
   end
