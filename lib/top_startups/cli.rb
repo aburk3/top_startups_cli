@@ -2,15 +2,16 @@
 class TopStartups::CLI
 
   def call
+    TopStartups::Scraper.scrape_main
     list_startups
     user_menu
     goodbye
   end
 
   def list_startups
-    puts "Today's Top Startups: (type 'refresh' to update now)"
-    @startups ||= TopStartups::Startups.refresh 
-    @startups.each.with_index(1) do |startup, i|
+    puts "Today's Top Startups:"
+
+    TopStartups::Startups.all.each.with_index(1) do |startup, i|
       puts "#{i}. #{startup.name}"
     end
   end
@@ -27,9 +28,6 @@ class TopStartups::CLI
       elsif input == "list"
         puts "---------------------------------------------"
         list_startups
-      elsif input == "refresh"
-        TopStartups::Startups.refresh
-        list_startups
       elsif input != "exit"
         puts "Did not recognize the input, please type list or exit."
       end
@@ -37,7 +35,8 @@ class TopStartups::CLI
   end
 
   def details(input)
-    the_startup = @startups[input.to_i-1]
+    the_startup = TopStartups::Startups.all[input.to_i-1]
+    TopStartups::Scraper.scrape_details(the_startup) if the_startup.funding == nil
     puts "---------------------------------------------"
     puts "#{the_startup.name}"
     puts <<~DOC
