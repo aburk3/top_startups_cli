@@ -22,10 +22,10 @@ Or install it yourself as:
 
 ## Usage
 
-To run this gem, can type into the terminal/command prompt:
+To run this gem, you can type into the terminal/command prompt:
 
   `ruby bin/top-startups`
-  
+
 
 ## Development
 
